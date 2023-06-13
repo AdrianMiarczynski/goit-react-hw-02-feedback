@@ -12,12 +12,12 @@ export const Statistics = ({
       <h2 className={css['statistics__header']}>Statistics</h2>
       <div className={css['statistics__wrapper']}>
         <ul className={css['statistics__list']}>
-          <li className={css['statistics__list-item']}>Good:{good}</li>
-          <li className={css['statistics__list-item']}>Neutral:{neutral}</li>
-          <li className={css['statistics__list-item']}>Bad:{bad}</li>
-          <li className={css['statistics__list-item']}>Total:{total}</li>
+          <li className={css['statistics__list-item']}>Good: {good}</li>
+          <li className={css['statistics__list-item']}>Neutral: {neutral}</li>
+          <li className={css['statistics__list-item']}>Bad: {bad}</li>
+          <li className={css['statistics__list-item']}>Total: {total}</li>
           <li className={css['statistics__list-item']}>
-            Positive feedback:{positivePercontage}%
+            Positive feedback: {positivePercontage}%
           </li>
         </ul>
       </div>
