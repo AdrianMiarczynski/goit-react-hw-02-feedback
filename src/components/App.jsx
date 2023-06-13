@@ -2,6 +2,8 @@ import { Component } from 'react';
 import { Section } from './section/section';
 import { Statistics } from './statistics/statistics';
 import css from './feedbackoptions/feedbackoptions.module.css';
+// import { FeedbackOptions } from './feedbackoptions';
+import { Notification } from './notification';
 
 export class App extends Component {
   state = {
@@ -49,6 +51,7 @@ export class App extends Component {
         }}
       >
         <Section title={'Please leave feedback'} />
+        {/* <FeedbackOptions /> */}
         <div className={css['btn-wrapper']}>
           <button type="button" onClick={this.countGoodFeedback}>
             Good
@@ -60,13 +63,17 @@ export class App extends Component {
             Bad
           </button>
         </div>
-        <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={this.countTotalFeedback()}
-          positivePercontage={this.countPositiveFeedbackPercentage()}
-        />
+        {this.countTotalFeedback() ? (
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={this.countTotalFeedback()}
+            positivePercontage={this.countPositiveFeedbackPercentage()}
+          />
+        ) : (
+          <Notification message="There is no feedback" />
+        )}
       </div>
     );
   }
