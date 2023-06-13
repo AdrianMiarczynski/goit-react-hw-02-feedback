@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Section } from './section/section';
 import { Statistics } from './statistics/statistics';
+import css from './feedbackoptions/feedbackoptions.module.css';
 
 export class App extends Component {
   state = {
@@ -48,25 +49,24 @@ export class App extends Component {
         }}
       >
         <Section title={'Please leave feedback'} />
-        <button type="button" onClick={this.countGoodFeedback}>
-          Good
-        </button>
-        <button type="button" onClick={this.countNeutralFeedback}>
-          Neutral
-        </button>
-        <button type="button" onClick={this.countBadFeedback}>
-          Bad
-        </button>
-        <h2>Statistics</h2>
-        <div>
-          <ul>
-            <li>Good:{this.state.good}</li>
-            <li>Neutral:{this.state.neutral}</li>
-            <li>Bad:{this.state.bad}</li>
-            <li>Total:{this.countTotalFeedback()}</li>
-            <li>Positive feedback:{this.countPositiveFeedbackPercentage()}%</li>
-          </ul>
+        <div className={css['btn-wrapper']}>
+          <button type="button" onClick={this.countGoodFeedback}>
+            Good
+          </button>
+          <button type="button" onClick={this.countNeutralFeedback}>
+            Neutral
+          </button>
+          <button type="button" onClick={this.countBadFeedback}>
+            Bad
+          </button>
         </div>
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.countTotalFeedback()}
+          positivePercontage={this.countPositiveFeedbackPercentage()}
+        />
       </div>
     );
   }

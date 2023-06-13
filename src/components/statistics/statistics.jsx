@@ -1,28 +1,24 @@
-// import css from './statistics.module.css';
+import css from './statistics.module.css';
 // import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 export const Statistics = ({
-    
+  good,
+  neutral,
+  bad,
+  total,
+  positivePercontage,
 }) => {
   return (
-    <div>
-      <button type="button" onClick={this.countGoodFeedback}>
-        Good
-      </button>
-      <button type="button" onClick={this.countNeutralFeedback}>
-        Neutral
-      </button>
-      <button type="button" onClick={this.countBadFeedback}>
-        Bad
-      </button>
-      <h2>Statistics</h2>
-      <div>
-        <ul>
-          <li>Good:{this.state.good}</li>
-          <li>Neutral:{this.state.neutral}</li>
-          <li>Bad:{this.state.bad}</li>
-          <li>Total:{this.countTotalFeedback()}</li>
-          <li>Positive feedback:{this.countPositiveFeedbackPercentage()}%</li>
+    <div className={css.statistics}>
+      <h2 className={css['statistics__header']}>Statistics</h2>
+      <div className={css['statistics__wrapper']}>
+        <ul className={css['statistics__list']}>
+          <li className={css['statistics__list-item']}>Good:{good}</li>
+          <li className={css['statistics__list-item']}>Neutral:{neutral}</li>
+          <li className={css['statistics__list-item']}>Bad:{bad}</li>
+          <li className={css['statistics__list-item']}>Total:{total}</li>
+          <li className={css['statistics__list-item']}>
+            Positive feedback:{positivePercontage}%
+          </li>
         </ul>
       </div>
     </div>
