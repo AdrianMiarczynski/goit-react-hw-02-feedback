@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import { Section } from './section/section';
 import { Statistics } from './statistics/statistics';
-import css from './feedbackoptions/feedbackoptions.module.css';
-// import { FeedbackOptions } from './feedbackoptions';
+// import css from './feedbackoptions/feedbackoptions.module.css';
+import { FeedbackOptions } from './feedbackoptions';
 import { Notification } from './notification';
 
 export class App extends Component {
@@ -11,20 +11,9 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
-
-  countGoodFeedback = () => {
+  countStateFeedback = name => {
     this.setState(state => ({
-      good: state.good + 1,
-    }));
-  };
-  countNeutralFeedback = () => {
-    this.setState(state => ({
-      neutral: state.neutral + 1,
-    }));
-  };
-  countBadFeedback = () => {
-    this.setState(state => ({
-      bad: state.bad + 1,
+      [name]: state[name] + 1,
     }));
   };
 
@@ -51,18 +40,10 @@ export class App extends Component {
         }}
       >
         <Section title={'Please leave feedback'} />
-        {/* <FeedbackOptions /> */}
-        <div className={css['btn-wrapper']}>
-          <button type="button" onClick={this.countGoodFeedback}>
-            Good
-          </button>
-          <button type="button" onClick={this.countNeutralFeedback}>
-            Neutral
-          </button>
-          <button type="button" onClick={this.countBadFeedback}>
-            Bad
-          </button>
-        </div>
+        <FeedbackOptions
+          options={Object.keys(this.state)}
+          onLeaveFeedback={this.countStateFeedback}
+        />
         {this.countTotalFeedback() ? (
           <Statistics
             good={this.state.good}
